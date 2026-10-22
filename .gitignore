@@ -1,0 +1,8 @@
+# Only the website is published. Everything else in this folder
+# (originals, school files, old versions) stays private on your Mac.
+/*
+!/index.html
+!/media/
+!/.gitignore
+!/CNAME
+.DS_Store
