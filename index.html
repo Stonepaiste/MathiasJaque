@@ -90,11 +90,18 @@
   .facts li strong{color:var(--text);font-weight:600}
 
   /* SKILLS */
-  .skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
-  .skill{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
-  .skill h3{font-size:1.02rem;margin-bottom:10px}
-  .skill h3::before{content:"◆ ";color:var(--accent)}
-  .skill p{font-size:.9rem;color:var(--muted)}
+  .skills-main{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+  @media(max-width:760px){.skills-main{grid-template-columns:1fr}}
+  .skill-big{position:relative;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px 28px 22px;overflow:hidden;transition:border-color .2s}
+  .skill-big:hover{border-color:var(--accent)}
+  .skill-big .num{position:absolute;top:14px;right:20px;font-family:'Space Grotesk';font-size:3.2rem;font-weight:700;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.25}
+  .skill-big h3{font-size:1.35rem;margin-bottom:10px;padding-right:60px}
+  .skill-big p{font-size:.93rem;color:var(--muted)}
+  .skill-big .seen{margin-top:12px;font-size:.8rem}
+  .skills-also{display:grid;grid-template-columns:auto 1fr 1fr;gap:12px 28px;margin-top:22px;padding:18px 24px;border:1px solid var(--line);border-radius:14px;font-size:.88rem;color:var(--muted)}
+  @media(max-width:760px){.skills-also{grid-template-columns:1fr}}
+  .skills-also strong{color:var(--accent3);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase}
+  .also-h{display:block;color:var(--text);font-weight:600;margin-bottom:2px}
 
   /* TIMELINE */
   .timeline{border-left:2px solid var(--line);margin-left:8px;padding-left:28px}
@@ -146,9 +153,11 @@
   .chapter-text h4{font-family:'Inter',system-ui,sans-serif;font-size:.74rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--accent3);margin:22px 0 8px}
   .chapter-text h4:first-child{margin-top:0}
   .chapter-text p{font-size:.95rem;color:#cfcfe0}
+  .chapter-text p + p{margin-top:10px}
   .chapter-text ul.did{list-style:none}
   .chapter-text ul.did li{position:relative;padding:5px 0 5px 20px;font-size:.93rem;color:#cfcfe0}
   .chapter-text ul.did li::before{content:"";position:absolute;left:2px;top:13px;width:8px;height:8px;border-radius:2px;background:var(--grad);transform:rotate(45deg)}
+  .chapter-text ul.learned li::before{background:var(--accent3);border-radius:50%;transform:none;top:12px}
   .chapter-text li.todo{color:var(--accent2);border:1px dashed var(--accent2);border-radius:8px;padding-left:28px;margin:4px 0}
   .chapter-text li.todo::before{left:10px}
   .chapter-text .tags{margin-top:18px}
@@ -162,6 +171,9 @@
   .media-grid img,.media-grid video{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;background:#000;border:1px solid var(--line)}
   .media-grid figure.feature img,.media-grid figure.feature video{aspect-ratio:16/9}
   .media-grid figure.half img{aspect-ratio:16/10}
+  .media-grid figure.tall{grid-row:span 2;display:flex;flex-direction:column}
+  .media-grid figure.tall img{aspect-ratio:auto;flex:1;min-height:0;height:100%}
+  @media(max-width:600px){.media-grid figure.tall img{aspect-ratio:3/4}}
   .media-grid img{cursor:zoom-in;transition:transform .25s,border-color .25s}
   .media-grid img:hover{transform:scale(1.015);border-color:var(--accent)}
   .media-grid img.contain{object-fit:contain;background:#fff}
@@ -197,6 +209,77 @@
   .fig-tools{position:absolute;top:8px;right:8px;display:flex;gap:6px;z-index:2}
   .fig-remove{padding:3px 9px;background:rgba(10,10,16,.85)}
 
+  /* ============ CV ============ */
+  #cv{border-top:1px solid var(--line)}
+  .cv-top{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:28px}
+  .cv-top h2{margin-bottom:0}
+  .cv-actions{display:flex;gap:12px;flex-wrap:wrap}
+  .cv-actions button{cursor:pointer;background:none;font-family:inherit}
+  .cv-sheet{display:grid;grid-template-columns:300px minmax(0,1fr);background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+  @media(max-width:860px){.cv-sheet{grid-template-columns:1fr}}
+  .cv-side{background:var(--bg2);padding:32px 28px;border-right:1px solid var(--line)}
+  .cv-main{padding:32px 36px}
+  @media(max-width:600px){.cv-side,.cv-main{padding:24px 20px}}
+  .cv-photo{width:120px;height:120px;border-radius:50%;object-fit:cover;object-position:50% 30%;border:2px solid var(--line);display:block;margin-bottom:16px}
+  .cv-name{font-size:1.35rem}
+  .cv-role{color:var(--muted);font-size:.85rem;margin-top:4px}
+  .cv-sheet h4{font-family:'Inter',system-ui,sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--accent3);margin:26px 0 10px}
+  .cv-main h4:first-child{margin-top:0}
+  .cv-list{list-style:none;font-size:.86rem}
+  .cv-list li{padding:3px 0;color:var(--text)}
+  .cv-list li span{display:block;font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+  .cv-bullets{list-style:none;font-size:.88rem}
+  .cv-bullets li{position:relative;padding:2px 0 2px 16px;color:#cfcfe0}
+  .cv-bullets li::before{content:"";position:absolute;left:2px;top:11px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .cv-chips{font-size:.84rem;color:#cfcfe0;line-height:1.7}
+  .cv-small{font-size:.84rem;color:var(--muted)}
+  .cv-profile{font-size:.98rem;color:#cfcfe0}
+  .cv-item{display:grid;grid-template-columns:96px minmax(0,1fr);gap:16px;padding:12px 0;border-bottom:1px solid var(--line)}
+  .cv-item:last-of-type{border-bottom:none}
+  @media(max-width:600px){.cv-item{grid-template-columns:1fr;gap:2px}}
+  .cv-when{font-size:.8rem;color:var(--accent3);letter-spacing:.04em;padding-top:2px;white-space:nowrap}
+  .cv-item h5{font-family:'Space Grotesk',system-ui,sans-serif;font-size:1.02rem;margin-bottom:4px}
+  .cv-item p{font-size:.9rem;color:#cfcfe0}
+  .cv-item p + p{margin-top:6px}
+  .cv-credits{width:100%;border-collapse:collapse;margin-top:10px;font-size:.8rem}
+  .cv-credits td{padding:5px 8px 5px 0;border-top:1px solid var(--line);color:var(--muted);vertical-align:top}
+  .cv-credits td:first-child{color:var(--accent3);white-space:nowrap;width:62px}
+  .cv-credits td:nth-child(2){color:var(--text)}
+  @media(max-width:600px){.cv-credits td:nth-child(3){display:none}}
+
+  /* print just the CV (used by "Print / save a fresh copy") */
+  @media print{
+    @page{size:A4;margin:11mm 12mm}
+    body.print-cv{background:#fff!important;color:#1a1a22}
+    body.print-cv > *:not(#cv){display:none!important}
+    body.print-cv > #cv{display:block!important;padding:0!important;border:none}
+    body.print-cv #cv .cv-top{display:none}
+    body.print-cv #cv .wrap{max-width:none;padding:0}
+    body.print-cv .cv-sheet{grid-template-columns:62mm 1fr;border:none;border-radius:0;background:#fff}
+    body.print-cv .cv-side{background:#f3f3f7;border-right:none;padding:7mm 6mm;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    body.print-cv .cv-main{padding:2mm 0 0 8mm}
+    body.print-cv .cv-sheet h4{color:#3b5fd9;margin:5mm 0 2mm;font-size:7.5pt}
+    body.print-cv .cv-main h4:first-child{margin-top:0}
+    body.print-cv .cv-sheet,body.print-cv .cv-sheet p,body.print-cv .cv-list li,body.print-cv .cv-bullets li,body.print-cv .cv-chips,body.print-cv .cv-item p,body.print-cv .cv-profile,body.print-cv .cv-credits td:nth-child(2),body.print-cv h3,body.print-cv h5{color:#1a1a22!important}
+    body.print-cv .cv-small,body.print-cv .cv-role,body.print-cv .cv-list li span,body.print-cv .cv-credits td{color:#5a5a6a!important}
+    body.print-cv .cv-when,body.print-cv .cv-credits td:first-child{color:#3b5fd9!important}
+    body.print-cv .cv-item,body.print-cv .cv-credits td{border-color:#dcdce6}
+    body.print-cv .cv-item{grid-template-columns:22mm 1fr;gap:3mm;padding:2.2mm 0;break-inside:avoid}
+    body.print-cv .cv-sheet a{color:#1a1a22;text-decoration:none}
+    body.print-cv .cv-photo{width:30mm;height:30mm;border-color:#dcdce6}
+    body.print-cv .cv-name{font-size:15pt}
+    body.print-cv .cv-sheet{font-size:9pt}
+    body.print-cv .cv-profile,body.print-cv .cv-item p,body.print-cv .cv-bullets,body.print-cv .cv-list,body.print-cv .cv-chips{font-size:8.6pt;line-height:1.45}
+    body.print-cv .cv-credits{font-size:7.6pt}
+    body.print-cv .cv-credits td{padding:1.2mm 2mm 1.2mm 0}
+    body.print-cv .cv-credits{table-layout:fixed}
+    body.print-cv .cv-credits td:first-child{width:13mm}
+    body.print-cv .cv-credits td:nth-child(2){width:27mm}
+    body.print-cv .cv-credits td:nth-child(3){width:21mm}
+    body.print-cv .cv-side{align-self:start}
+    body.print-cv .cv-bullets li::before{background:#3b5fd9;top:2.2mm}
+  }
+
   /* FOOTER */
   footer{border-top:1px solid var(--line);padding:56px 0;text-align:center}
   footer .big{font-family:'Space Grotesk';font-size:clamp(1.4rem,3vw,2rem);margin-bottom:14px}
@@ -224,6 +307,7 @@
       <li><a href="#projects">Projects</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#carpark">On Tour</a></li>
+      <li><a href="#cv">CV</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
@@ -239,7 +323,7 @@
     <p class="sub">Copenhagen / Malmö · mathiasjaque@hotmail.com</p>
     <div class="cta">
       <a class="btn btn-primary" href="mailto:mathiasjaque@hotmail.com">Get in touch</a>
-      <a class="btn btn-ghost" href="media/docs/Mathias_Jaque_CV.pdf" target="_blank">View CV</a>
+      <a class="btn btn-ghost" href="#cv">View CV</a>
       <!-- ✏️ EDIT: add your LinkedIn URL below -->
       <a class="btn btn-ghost" href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
     </div>
@@ -279,23 +363,40 @@
   <div class="wrap">
     <p class="kicker">What I do</p>
     <h2>Skills</h2>
-    <div class="skills" data-edit="">
-      <div class="skill">
-        <h3>UX &amp; Research</h3>
-        <p>Usability testing (think-aloud, SUS, semi-structured interviews), personas, iterative design, quantitative &amp; qualitative analysis.</p>
+    <div class="skills-main" data-edit="">
+      <div class="skill-big">
+        <span class="num">01</span>
+        <h3>Rapid prototyping</h3>
+        <p>From idea to something people can hold, fast. Paper prototypes, breadboards, 3D-printed enclosures and quick Unity builds — test early, learn, change, repeat.</p>
+        <div class="tags"><span class="tag">Paper prototyping</span><span class="tag">Fusion 360</span><span class="tag">3D printing</span><span class="tag">Unity</span><span class="tag">Figma</span></div>
+        <p class="seen">Seen in <a href="#p-orbs">O.R.B.S.</a> · <a href="#p-deepseek">Deepseek</a> · <a href="#p-ipasif">IPASIF</a></p>
       </div>
-      <div class="skill">
-        <h3>Design &amp; Prototyping</h3>
-        <p>Figma (lo-fi → hi-fi prototypes), interaction design, game design, flowcharts and design principles in practice.</p>
+      <div class="skill-big">
+        <span class="num">02</span>
+        <h3>Problem declaration &amp; solutions</h3>
+        <p>Turning a vague brief into a sharp problem statement — analysis, state of the art, requirements — then designing, building and testing a solution against it. Every semester at AAU runs on this problem-based loop.</p>
+        <div class="tags"><span class="tag">Problem-based learning</span><span class="tag">Requirements</span><span class="tag">State of the art</span><span class="tag">Evaluation</span></div>
+        <p class="seen">Seen in <a href="#p-orbs">O.R.B.S.</a> · <a href="#p-shadow">My Shadow World</a> · <a href="#p-nightknight">Night Knight</a></p>
       </div>
-      <div class="skill">
-        <h3>Development</h3>
-        <p>C# / .NET MAUI / XAML, Unity, AI programming, working with maps, sensors and real device data.</p>
+      <div class="skill-big">
+        <span class="num">03</span>
+        <h3>Embedded hardware</h3>
+        <p>ESP32 boards talking wirelessly over ESP-NOW, sensors and encoders, LEDs and haptics, battery power and boost converters — and getting it all to talk to Unity, PureData or TouchDesigner.</p>
+        <div class="tags"><span class="tag">ESP32</span><span class="tag">ESP-NOW</span><span class="tag">C++ / ESP-IDF</span><span class="tag">Sensors</span><span class="tag">Serial / OSC</span></div>
+        <p class="seen">Seen in <a href="#p-orbs">O.R.B.S.</a> · <a href="#p-ipasif">IPASIF</a> · <a href="#p-deepseek">Deepseek</a> (piezo hydrophone)</p>
       </div>
-      <div class="skill">
-        <h3>Production &amp; Leadership</h3>
-        <p>Tour &amp; production management, budgeting, AV production, live broadcast, leading crews under pressure.</p>
+      <div class="skill-big">
+        <span class="num">04</span>
+        <h3>Human–machine interaction</h3>
+        <p>Designing how people meet technology — tangible interfaces, interaction design and testing with real users through think-aloud, interviews, card sorting, SUS and game-experience questionnaires.</p>
+        <div class="tags"><span class="tag">Tangible UI</span><span class="tag">Usability testing</span><span class="tag">SUS / GEQ</span><span class="tag">Thematic analysis</span></div>
+        <p class="seen">Seen in <a href="#p-orbs">O.R.B.S.</a> · <a href="#p-ux">Smart-home study</a> · <a href="#p-nightknight">Night Knight</a></p>
       </div>
+    </div>
+    <div class="skills-also" data-edit="">
+      <div><strong>Also</strong></div>
+      <div><span class="also-h">Production &amp; leadership</span> 10+ years of tours, live TV and video production — budgets, crews and deadlines that don't move.</div>
+      <div><span class="also-h">Software &amp; tools</span> C# / Unity, .NET MAUI, Python, Wwise, PureData, TouchDesigner, Figma.</div>
     </div>
   </div>
 </section>
@@ -342,6 +443,13 @@
             <li>Wireless link: the spheres send input over ESP-NOW to a receiver ESP that feeds Unity over USB serial.</li>
             <li>Ran the comparative playtests together with the group.</li>
           </ul>
+          <h4>What I learned</h4>
+          <ul class="did learned">
+            <li>Hardware lives or dies on power and space — the spheres only worked once I rethought them around a smaller board and a boosted 5 V supply.</li>
+            <li>Test the whole system, not just the new part. We usability-tested the controllers but not the game logic, so a button-mashing shortcut only surfaced in the final study.</li>
+            <li>Study design decides what you can claim: with 11 participants the trend was clear but not conclusive. Screening participants and filming hands and screen separately would have made the data stronger.</li>
+            <li>Custom hardware has to earn its place — a small effect raises the fair question of whether a custom game alone could do the job.</li>
+          </ul>
           <div class="tags"><span class="tag">Tangible UI</span><span class="tag">ESP32</span><span class="tag">ESP-NOW</span><span class="tag">Unity</span><span class="tag">3D printing</span><span class="tag">User study</span></div>
           <div class="links">
             <a href="media/docs/orbs-bachelor-thesis.pdf" target="_blank">📄 Read the thesis</a>
@@ -381,6 +489,12 @@
             <li>All sound implementation in Wwise, and most of the sound design.</li>
             <li>Sound vision: every sound should feel like it's heard through real water, reinforcing the visuals.</li>
             <li>Built an underwater microphone from a piezo element and recorded sound effects through water in a tank.</li>
+          </ul>
+          <h4>What I learned</h4>
+          <ul class="did learned">
+            <li>How to plan and carry a shared vision for a game all the way through production.</li>
+            <li>Prototype on paper before going digital — it is far cheaper to find problems there.</li>
+            <li>Game design is iterative at heart: most pain can be avoided by getting players involved as early as possible.</li>
           </ul>
           <div class="tags"><span class="tag">Unity</span><span class="tag">Wwise</span><span class="tag">Sound design</span><span class="tag">Field recording</span><span class="tag">Game design</span></div>
           <div class="links">
@@ -423,8 +537,16 @@
             <li>Unity Behavior Graph driving the leader through idle, roam, seek and dive.</li>
             <li>Line-of-sight perception with raycasts, so taking cover actually protects you.</li>
           </ul>
+          <h4>What I learned</h4>
+          <ul class="did learned">
+            <li>How believable flocking emerges from three simple rules — and how much of the result comes from tuning the parameters.</li>
+            <li>Splitting "what to do" (behaviour graph) from "how to move" (motor script), and writing custom behaviour nodes that bridge the two.</li>
+            <li>Using an AI assistant to get unstuck on vector maths and syntax, while understanding the code well enough to keep iterating on it myself.</li>
+          </ul>
           <div class="tags"><span class="tag">Unity</span><span class="tag">C#</span><span class="tag">Boids</span><span class="tag">Behaviour trees</span></div>
           <div class="links">
+            <a href="https://youtu.be/CZSgO_dLwng" target="_blank">▶️ Gameplay video</a>
+            <a href="https://github.com/Stonepaiste/AI-Exam-project.git" target="_blank">💻 GitHub</a>
             <a href="media/docs/boids-ai-report.pdf" target="_blank">📄 Read the report</a>
           </div>
         </div>
@@ -459,6 +581,13 @@
             <li>Thematic analysis framed by the Technology Acceptance Model and Diffusion of Innovation.</li>
             <li>Concluded that local, offline-capable platforms with transparent data practices matter more than smarter technology.</li>
           </ul>
+          <h4>What I learned</h4>
+          <ul class="did learned">
+            <li>Running a qualitative study end to end on my own — and how easily a lone researcher's expectations can steer follow-up questions.</li>
+            <li>Small convenience samples give insight, not general truths.</li>
+            <li>Method details matter: re-sorting the same cards after the AI discussion may have nudged answers — next time, clear the board and start over.</li>
+            <li>Trust beats features — people's barrier was privacy, not missing technology.</li>
+          </ul>
           <div class="tags"><span class="tag">UX research</span><span class="tag">Interviews</span><span class="tag">Card sorting</span><span class="tag">Thematic analysis</span></div>
           <div class="links">
             <a href="media/docs/smart-home-ux-paper.pdf" target="_blank">📄 Read the paper</a>
@@ -484,22 +613,30 @@
       <div class="chapter-body">
         <div class="chapter-text" data-edit="">
           <h4>About the project</h4>
-          <!-- ✏️ EDIT: add 1–2 lines on the research question and findings -->
-          <p>We turned a short film into a VR experience — instead of watching the story on a screen, you step inside its dreamlike, fog-filled scenes.</p>
+          <p>We turned a short film into a VR experience — instead of watching the story on a screen, you step inside its dreamlike, fog-filled scenes. It was an extension of the film rather than a direct translation. We wanted to research how using VR could help raising immersion.&nbsp;</p>
+          <p>Built in Unity together with the film's director, using environmental storytelling, spatial audio and cinematic lighting. An A/B study (VR vs. watching the film) with interviews and the Igroup Presence Questionnaire found no significant gain in how accurately people read the director's intent — but a clear shift in engagement: VR participants told the story from an embodied, first-person view, while viewers stayed observers.</p>
           <h4>What I did</h4>
           <ul class="did">
-            <li class="todo">✏️ Add what you did on this project</li>
-            <li>Six-person group project.</li>
+            <li>Sound design and sound geometrics implementation via FMOD and meta XR sound kit to achieve realistic spatial sound utilising general HRTF's.</li>
           </ul>
-          <div class="tags"><span class="tag">VR</span><span class="tag">Film adaptation</span><span class="tag">AV production</span></div>
-          <!-- ✏️ EDIT: the PDF in "5th semester" is the exam schedule, not the report — add the report link here -->
+          <h4>What I learned</h4>
+          <ul class="did learned">
+            <li>Sound perception and cognition, how sound are physically perceived and modelled.&nbsp;</li><li>Sound implementation using FMOD and Unity.&nbsp;</li><li>Foley recording a anachoic chamber to be able to correctly use HRTF's (Head Related Tranfer Functions)</li>
+          </ul>
+          <div class="tags"><span class="tag">VR</span><span class="tag">Unity</span><span class="tag">FMOD</span><span class="tag">Meta XR Audio</span><span class="tag">Spatial audio / HRTF</span><span class="tag">Film adaptation</span></div>
+          <div class="links">
+            <a href="media/docs/p5_MED5_AAU_2025.pdf" target="_blank">📄 Read the report</a>
+          </div>
         </div>
         <div class="media-grid">
           <figure class="feature"><video controls="" preload="none" playsinline="" poster="media/uni/tacet/car.jpg" src="media/uni/tacet/tacet-vr-av.mp4"></video><figcaption data-edit="">AV production</figcaption></figure>
-          <figure class="half"><img src="media/uni/tacet/bedroom.jpg" alt="Bedroom scene in VR" loading="lazy"><figcaption data-edit="">The bedroom</figcaption></figure>
-          <figure class="half"><img src="media/uni/tacet/tv.jpg" alt="Old TV in the fog" loading="lazy"><figcaption data-edit="">Memories on an old TV</figcaption></figure>
-          <figure class="half"><img src="media/uni/tacet/hands.jpg" alt="Glowing hands" loading="lazy"><figcaption data-edit=""></figcaption></figure>
-          <figure class="half"><img src="media/uni/tacet/light.jpg" alt="A figure walking towards the light" loading="lazy"><figcaption data-edit=""></figcaption></figure>
+          <figure class="tall"><img src="media/uni/tacet/Audio%20Anachoic.JPEG" alt="Mathias with a head-and-torso simulator in the anechoic chamber" loading="lazy"><figcaption data-edit="">In the anechoic chamber</figcaption></figure>
+          <figure><img src="media/uni/tacet/bedroom.jpg" alt="Bedroom scene in VR" loading="lazy"><figcaption data-edit="">The bedroom</figcaption></figure>
+          <figure><img src="media/uni/tacet/tv.jpg" alt="Old TV in the fog" loading="lazy"><figcaption data-edit="">Memories on an old TV</figcaption></figure>
+          <figure><img src="media/uni/tacet/hands.jpg" alt="Glowing hands" loading="lazy"><figcaption data-edit="">The hand sequence</figcaption></figure>
+          <figure><img src="media/uni/tacet/light.jpg" alt="A figure walking towards the light" loading="lazy"><figcaption data-edit="">Towards the light</figcaption></figure>
+          <figure class="half"><img class="contain" src="media/uni/tacet/meta-xr-audio-source.jpg" alt="Meta XR Audio source settings in FMOD" loading="lazy"><figcaption data-edit="">Meta XR spatializer in FMOD — HRTF, reflections and occlusion per sound</figcaption></figure>
+          <figure class="half"><img class="contain" src="media/uni/tacet/fmod-multi-instrument.jpg" alt="FMOD multi-instrument event" loading="lazy"><figcaption data-edit="">FMOD multi-instrument with variations of the hand-woosh sound</figcaption></figure>
         </div>
       </div>
     </div>
@@ -520,8 +657,13 @@
           <p>A framework that links sensors on ESP32 boards to PureData for sound and TouchDesigner for visuals — ESP-NOW between the boards, OSC to the computer. Three use cases ("Spaceship", "Ballin'" and "What's in the Box") show what it can do; artists evaluated it in interviews, and stress tests measured about 44 ms average latency with satisfactory range.</p>
           <h4>What I did</h4>
           <ul class="did">
-            <li class="todo">✏️ Add what you did on this project</li>
-            <li>Six-person group project.</li>
+            <li>Sensor design and assembly + code.</li>
+          </ul>
+          <h4>What I learned</h4>
+          <ul class="did learned">
+            <li>People judge the demo, not the tool — the artists responded to our use cases rather than the framework, so testers need hands-on time with the actual toolkit.</li>
+            <li>There's a big gap between "it works" and "artists can use it": enclosures, ready-made sensors and a GUI matter as much as the core system.</li>
+            <li>Wireless latency is a real design constraint when sound has to react to people live. We could have stripping the first 5 layers of the OSI model and stayed within the ESP-NOW and serial protocols, which could have lowered the latency to around 1 ms. We used this method in future projects.</li>
           </ul>
           <div class="tags"><span class="tag">ESP32</span><span class="tag">ESP-NOW</span><span class="tag">PureData</span><span class="tag">TouchDesigner</span><span class="tag">OSC</span></div>
           <div class="links">
@@ -531,7 +673,7 @@
         <div class="media-grid">
           <figure class="feature"><video controls="" preload="none" playsinline="" poster="media/uni/ipasif/performance.jpg" src="media/uni/ipasif/ipasif-av.mp4"></video><figcaption data-edit="">AV production</figcaption></figure>
           <figure><img src="media/uni/ipasif/projection-yellow.jpg" alt="Interactive projection" loading="lazy"><figcaption data-edit="">Sensor-driven visuals</figcaption></figure>
-          <figure><img src="media/uni/ipasif/projection-interaction.jpg" alt="Person interacting with projection" loading="lazy"><figcaption data-edit="">Playing the installation</figcaption></figure>
+          <figure><img src="media/uni/ipasif/projection-interaction.jpg" alt="Person interacting with projection" loading="lazy"><figcaption data-edit="">Testing the installation</figcaption></figure>
           <figure><img src="media/uni/ipasif/sensor-boxes.jpg" alt="Sensor boxes" loading="lazy"><figcaption data-edit="">Wireless sensor modules</figcaption></figure>
           <figure><img src="media/uni/ipasif/esp-now-diagram.jpg" alt="ESP-NOW system diagram" loading="lazy"><figcaption data-edit="">Sensor → ESP-NOW → OSC</figcaption></figure>
           <figure><img src="media/uni/ipasif/touchdesigner.jpg" alt="TouchDesigner network" loading="lazy"><figcaption data-edit="">Visuals in TouchDesigner</figcaption></figure>
@@ -558,6 +700,12 @@
           <ul class="did">
             <li class="todo">✏️ Add what you did on this project</li>
             <li>Six-person group project.</li>
+          </ul>
+          <h4>What I learned</h4>
+          <ul class="did learned">
+            <li>Visual computing can tell a story: shaders gave the shadow monsters no physical form, mirroring emptiness, and motion capture made their animation efficient.</li>
+            <li>Playing alone in first person deepened the experience — players felt isolated and explored more.</li>
+            <li>Combining qualitative and quantitative methods (think-aloud, interviews, SUS) gives a fuller picture — and loneliness is experienced very differently from person to person.</li>
           </ul>
           <div class="tags"><span class="tag">Game design</span><span class="tag">Storytelling</span><span class="tag">Usability testing</span></div>
           <div class="links">
@@ -593,6 +741,12 @@
           <ul class="did">
             <li class="todo">✏️ Add what you did on this project</li>
             <li>Six-person group project.</li>
+          </ul>
+          <h4>What I learned</h4>
+          <ul class="did learned">
+            <li>Pick the tool that fits the job: we started in Unity, but a game engine fought us on maps and app UI, so we switched to .NET MAUI.</li>
+            <li>Scope to what's feasible: detecting attacks with machine learning was out of reach, so we built a simpler accelerometer-based alarm that actually worked.</li>
+            <li>Easy to use isn't the same as useful — the app scored A+ on usability, yet most testers were neutral about using it often.</li>
           </ul>
           <div class="tags"><span class="tag">.NET MAUI</span><span class="tag">C#</span><span class="tag">Figma</span><span class="tag">UX testing</span></div>
           <div class="links">
@@ -689,6 +843,160 @@
   </div>
 </section>
 
+<!-- ================= CV =================
+     ✏️ Edit like the rest of the page. The "Download CV" button links to
+     media/docs/Mathias_Jaque_CV.pdf. "Print / save a fresh copy" prints
+     just this section, so a PDF made that way always matches the page.
+     ======================================= -->
+<section id="cv">
+  <div class="wrap">
+    <div class="cv-top">
+      <div>
+        <p class="kicker">Curriculum vitae</p>
+        <h2>CV</h2>
+      </div>
+      <div class="cv-actions">
+        <a class="btn btn-primary" href="media/docs/Mathias_Jaque_CV.pdf" download="Mathias_Jaque_CV.pdf">⬇ Download CV (PDF)</a>
+        <button class="btn btn-ghost" type="button" onclick="printCV()">🖨 Print / save a fresh copy</button>
+      </div>
+    </div>
+
+    <div class="cv-sheet">
+      <aside class="cv-side" data-edit="">
+        <img class="cv-photo" src="media/cv/portrait.jpg" alt="Mathias Lerche Jaqué">
+        <h3 class="cv-name">Mathias Lerche Jaqué</h3>
+        <p class="cv-role">BSc Medialogy · Maker · Production lead</p>
+
+        <h4>Details</h4>
+        <ul class="cv-list">
+          <li><span>Based in</span>Malmö, Sweden · works in Copenhagen</li>
+          <li><span>Email</span><a href="mailto:mathiasjaque@hotmail.com">mathiasjaque@hotmail.com</a></li>
+          <li><span>Phone</span>+45 28 78 61 59</li>
+          <li><span>Nationality</span>Danish</li>
+          <li><span>Driving licence</span>Yes</li>
+          <!-- ✏️ EDIT: add your LinkedIn URL -->
+          <li><span>LinkedIn</span><a href="https://www.linkedin.com/" target="_blank">linkedin.com</a></li>
+        </ul>
+
+        <h4>Languages</h4>
+        <ul class="cv-list">
+          <li>Danish — native</li>
+          <li>English — fluent</li>
+        </ul>
+
+        <h4>Core skills</h4>
+        <ul class="cv-bullets">
+          <li>Rapid prototyping</li>
+          <li>Problem declaration &amp; solutions</li>
+          <li>Embedded hardware</li>
+          <li>Human–machine interaction</li>
+          <li>Production &amp; team leadership</li>
+        </ul>
+
+        <h4>Hardware &amp; code</h4>
+        <p class="cv-chips">ESP32 · ESP-NOW · ESP-IDF · C++ · Sensors &amp; encoders · LEDs &amp; haptics · Battery &amp; power · Serial / OSC · C# · Unity · .NET MAUI · Python</p>
+
+        <h4>Design, sound &amp; media</h4>
+        <p class="cv-chips">Fusion 360 · 3D printing · Figma · FMOD · Wwise · Meta XR Audio · PureData · TouchDesigner · Video production &amp; editing</p>
+
+        <h4>Research methods</h4>
+        <p class="cv-chips">Usability testing · Think-aloud · Semi-structured interviews · Card sorting · SUS · GEQ / SPGQ / IPQ · Thematic analysis · A/B and between-subjects studies</p>
+
+        <h4>Off duty</h4>
+        <p class="cv-small">Drums, and repairing and tinkering with electronics.</p>
+      </aside>
+
+      <div class="cv-main" data-edit="">
+        <h4>Profile</h4>
+        <p class="cv-profile">Medialogy graduate from Aalborg University Copenhagen with more than ten years in TV, live music and video production. I turn loose ideas into clear problem statements and working prototypes — from ESP32-based tangible controllers and sensor installations to games, VR and apps — and test them with real users. Touring and live broadcast taught me to plan hard, lead calmly and deliver on time when the show can't move.</p>
+
+        <h4>Education</h4>
+        <div class="cv-item">
+          <div class="cv-when">2023 — 2026</div>
+          <div>
+            <h5>BSc Medialogy · Aalborg University Copenhagen</h5>
+            <p>Human–machine interaction, rapid prototyping, embedded electronics, game design, sound and VR, taught through problem-based semester projects.</p>
+            <p class="cv-small">Bachelor thesis: <a href="#p-orbs">O.R.B.S.</a> — tangible controllers that promote collaboration in games. Other projects: <a href="#p-tacet">Tacet VR</a>, <a href="#p-ipasif">IPASIF</a>, <a href="#p-shadow">My Shadow World</a>, <a href="#p-nightknight">Night Knight</a>, <a href="#p-deepseek">Deepseek</a>.</p>
+          </div>
+        </div>
+        <div class="cv-item">
+          <div class="cv-when">2013 — 2014</div>
+          <div>
+            <h5>Diploma engineering courses · DTU</h5>
+            <p>Creativity &amp; Innovation, Entrepreneurship, Physics, Programming, Project 1.</p>
+          </div>
+        </div>
+        <div class="cv-item">
+          <div class="cv-when">2012 — 2013</div>
+          <div>
+            <h5>Business Economics &amp; Psychology courses · Copenhagen Business School</h5>
+            <p>Business economics, economic psychology, psychology and organisational theory.</p>
+          </div>
+        </div>
+
+        <h4>Experience</h4>
+        <div class="cv-item">
+          <div class="cv-when">2018 — now</div>
+          <div>
+            <h5>Tour Manager · Carpark North</h5>
+            <ul class="cv-bullets">
+              <li>Responsible for the band and everything around them on tour: planning, daily timelines, transport and logistics.</li>
+              <li>Main contact for venues and festivals; guest lists and security.</li>
+              <li>Shoots and edits tour video content.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="cv-item">
+          <div class="cv-when">2021 — 2022</div>
+          <div>
+            <h5>Head of Production · MA Production</h5>
+            <ul class="cv-bullets">
+              <li>Oversaw all video production, from pre-production to final delivery.</li>
+              <li>Owned production budgets.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="cv-item">
+          <div class="cv-when">2019 — 2021</div>
+          <div>
+            <h5>Product Manager · Moodagent</h5>
+            <ul class="cv-bullets">
+              <li>Responsible for video assets at the music-AI streaming company, creatively and in production.</li>
+              <li>Planned and ran Moodagent events.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="cv-item">
+          <div class="cv-when">2011 — 2019</div>
+          <div>
+            <h5>Broadcast TV &amp; film production · Copenhagen</h5>
+            <p>From runner to production manager on live and recorded shows for DR and TV2.</p>
+            <table class="cv-credits">
+              <tr><td>2019</td><td>Production Manager</td><td>United Production</td><td>Voice Junior</td></tr>
+              <tr><td>2018–19</td><td>Production Coordinator</td><td>Snowman Production</td><td>Boligkøb i blinde</td></tr>
+              <tr><td>2018</td><td>Technical Manager, scene shifts</td><td>Nordisk Film TV</td><td>DR Live</td></tr>
+              <tr><td>2018</td><td>Production Coordinator</td><td>United Production</td><td>Boligkøb i blinde</td></tr>
+              <tr><td>2018</td><td>Production Coordinator</td><td>Pineapple Entertainment</td><td>OL Late Night</td></tr>
+              <tr><td>2016–18</td><td>Production Coordinator</td><td>Pineapple Entertainment</td><td>Stjernekigger med Mark Le Fevre</td></tr>
+              <tr><td>2017</td><td>Production Assistant &amp; scene shifts</td><td>United Production</td><td>Voice Junior (live)</td></tr>
+              <tr><td>2016</td><td>Location Manager</td><td>Skylark</td><td>Flashback (DR)</td></tr>
+              <tr><td>2016</td><td>Production Coordinator</td><td>Diamond CPH</td><td>Helt ærligt · Oraklerne</td></tr>
+              <tr><td>2016</td><td>Production Assistant</td><td>Nordisk Film TV</td><td>Zulu Awards 2016</td></tr>
+              <tr><td>2013–16</td><td>Selected jobs</td><td>Various</td><td>The Danish Girl · Top Model · GO' Morgen / GO' Aften Danmark · Stjerner på vippen · Voice Junior</td></tr>
+              <tr><td>2011–12</td><td>Runner</td><td>Nordisk Film TV</td><td>Weekend Weekend</td></tr>
+              <tr><td>2011</td><td>Runner</td><td>Eyeworks</td><td>Zulu Kvægræs 3 (Australia)</td></tr>
+              <tr><td>2011</td><td>Piccolo</td><td>Eyeworks</td><td>In-house</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <h4>References</h4>
+        <p>Available on request.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= CONTACT ================= -->
 <footer id="contact">
   <div class="wrap" data-edit="">
@@ -697,7 +1005,7 @@
     <p>mathiasjaque@hotmail.com · +45 28 78 61 59 · Copenhagen / Malmö</p>
     <div class="cta">
       <a class="btn btn-primary" href="mailto:mathiasjaque@hotmail.com">Email me</a>
-      <a class="btn btn-ghost" href="media/docs/Mathias_Jaque_CV.pdf" target="_blank">CV (PDF)</a>
+      <a class="btn btn-ghost" href="media/docs/Mathias_Jaque_CV.pdf" download="Mathias_Jaque_CV.pdf">Download CV (PDF)</a>
     </div>
     <p style="margin-top:36px;font-size:.8rem">© 2026 Mathias Lerche Jaqué</p>
   </div>
@@ -728,12 +1036,18 @@ function toggleEdit(){
   document.getElementById('saveBtn').style.display = 'inline-block';
 }
 
+function printCV(){
+  document.body.classList.add('print-cv');
+  window.addEventListener('afterprint', () => document.body.classList.remove('print-cv'), {once:true});
+  window.print();
+}
+
 function savePage(){
   // copy the page and strip everything that only exists while editing / at runtime
   const doc = document.documentElement.cloneNode(true);
   doc.querySelectorAll('.edit-ui').forEach(e => e.remove());
   doc.querySelectorAll('[contenteditable]').forEach(e => e.removeAttribute('contenteditable'));
-  doc.querySelector('body').classList.remove('editing');
+  doc.querySelector('body').classList.remove('editing', 'print-cv');
   doc.querySelectorAll('.chapter').forEach(c => { c.style.removeProperty('--o'); if(!c.getAttribute('style')) c.removeAttribute('style'); });
   doc.querySelectorAll('.chapter-bg').forEach(b => b.innerHTML = '');
   doc.querySelector('#chapterRail').innerHTML = '';
