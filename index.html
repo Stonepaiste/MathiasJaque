@@ -94,6 +94,7 @@
   @media(max-width:760px){.skills-main{grid-template-columns:1fr}}
   .skill-big{position:relative;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px 28px 22px;overflow:hidden;transition:border-color .2s}
   .skill-big:hover{border-color:var(--accent)}
+  .skill-big:last-child:nth-child(odd){grid-column:1 / -1}
   .skill-big .num{position:absolute;top:14px;right:20px;font-family:'Space Grotesk';font-size:3.2rem;font-weight:700;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.25}
   .skill-big h3{font-size:1.35rem;margin-bottom:10px;padding-right:60px}
   .skill-big p{font-size:.93rem;color:var(--muted)}
@@ -278,6 +279,7 @@
     body.print-cv .cv-credits td:nth-child(3){width:21mm}
     body.print-cv .cv-side{align-self:start}
     body.print-cv .cv-bullets li::before{background:#3b5fd9;top:2.2mm}
+    body.print-cv .cv-sheet [style]{background:none!important;font-size:inherit!important;color:inherit!important}
   }
 
   /* FOOTER */
@@ -294,9 +296,11 @@
   body.editing [data-edit]{outline:1.5px dashed var(--accent2);outline-offset:4px;border-radius:4px}
   #editHint{display:none;position:fixed;bottom:80px;right:20px;z-index:99;max-width:280px;background:var(--card);border:1px solid var(--accent2);border-radius:12px;padding:14px 16px;font-size:.82rem;color:var(--muted)}
   body.editing #editHint{display:block}
+  #saveToast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);z-index:130;background:var(--card);border:1px solid var(--accent3);color:var(--text);padding:12px 18px;border-radius:12px;font-size:.88rem;box-shadow:0 6px 24px rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:.25s;max-width:min(520px,90vw);text-align:center}
+  #saveToast.show{opacity:1;transform:translate(-50%,0)}
 </style>
 </head>
-<body>
+<body class="">
 
 <nav>
   <div class="wrap">
@@ -319,7 +323,7 @@
   <div class="wrap" data-edit="">
     <p class="kicker">Medialogy&nbsp;<span style="letter-spacing: 3.2px;">&nbsp;</span><span style="letter-spacing: 3.2px;">· tech</span><span style="color: var(--accent3); font-size: 0.8rem; letter-spacing: 0.25em;">&nbsp;· Prototyping&nbsp;</span><span style="letter-spacing: 3.2px;">·</span><span style="color: var(--accent3); font-size: 0.8rem; letter-spacing: 0.25em;">&nbsp;MEdia Production&nbsp;</span><span style="color: var(--accent3); font-size: 0.8rem; letter-spacing: 3.2px;">·&nbsp;</span></p>
     <h1>Mathias<br><em>Lerche Jaqué</em></h1>
-    <p class="tagline">Medialogy graduate from Aalborg University Copenhagen with 10+ years running live shows, TV productions and tours — now building exploring the world of tech and human interaction.</p>
+    <p class="tagline">Medialogy graduate from Aalborg University Copenhagen with 10+ years running TV shows and touring with music artists — now building new solutions for exploring the boundaries between human computer interaction.</p>
     <p class="sub">Copenhagen / Malmö · mathiasjaque@hotmail.com</p>
     <div class="cta">
       <a class="btn btn-primary" href="mailto:mathiasjaque@hotmail.com">Get in touch</a>
@@ -337,21 +341,20 @@
     <h2>From the stage to the screen</h2>
     <div class="about-grid">
       <div data-edit="">
-        <p>I've spent over a decade making live productions happen — as tour manager for the Danish band <strong>Carpark North</strong>, head of production at MA Production, product manager at music-AI company <strong>Moodagent</strong>, and production coordinator on broadcast TV shows for DR and TV2. When a show has to go live at 8 o'clock sharp, with thousands of people watching, you learn to solve problems fast, lead teams calmly and never lose sight of the audience.</p>
+        <p>I've spent over a decade making live productions happen — as tour manager for the Danish band <strong>Carpark North</strong>, head of production at MA Production, product manager at music-AI company Moodagent and production coordinator on broadcast TV shows. When a show has to go live at 20:00 sharp, with thousands of people watching, you learn to solve problems and have contingency plans in case of unforeseen events.&nbsp;</p>
         <br>
-        <p>In 2023 I took that experience back to school and earned a <strong>Bachelor in Medialogy from Aalborg University Copenhagen (2026)</strong> — a degree that combines, human machine interaction (HCI), rapid prototyping, problem declaration and solution and embedded electronics.</p><p><br></p><p>I've designed and built novel game controllers from scratch, sensor based art installations, mobile apps in .NET MAUI, made usability studies with real users, programmed AI, designed games (VR as well) and recorded spatial soundscapes.&nbsp;</p>
-        <br>
-        <p>What I bring to a team: I find pride and fun in identifying the the problem and finding the solution while learning in the process.&nbsp;Ten years of real-world experience being told nothing is impossible with the right team and living by it really makes you believe that. <!-- ✏️ EDIT: adjust this pitch to taste --></p>
+        <p>In 2023 I took that experience back to school and earned a <strong>Bachelor in Medialogy from Aalborg University Copenhagen (2026)</strong> — a degree that combines, human computer interaction (HCI), rapid prototyping, problem declaration/solution and embedded electronics.</p><p><br></p><p>I've designed and built novel game controllers from scratch, sensor based art installations, mobile apps in .NET MAUI, made usability studies with real users, programmed AI, designed games using unity in 3D and VR and recorded spatial soundscapes.&nbsp;</p><p><br></p><p>Creating and designing amazing experiences for people whether it's a physical product, experience or a solution to a daily problem is at the core of what I love to do.&nbsp;</p>
+        <p>&nbsp;I find pride and fun in identifying the the problem and finding the solution while learning in the process. Ten years of real-world experience being told nothing is impossible with the right team and living by it really makes you believe that. <!-- ✏️ EDIT: adjust this pitch to taste --></p>
       </div>
       <aside class="facts" data-edit="">
         <h3>Quick facts</h3>
         <ul>
           <li><strong>Degree:</strong> BSc Medialogy, AAU CPH (2026)</li>
           <li><strong>Base:</strong> Malmö / Copenhagen</li>
-          <li><strong>Languages:</strong> Danish, English</li>
+          <li><strong>Languages:</strong> Danish, English, Swedish</li>
           <li><strong>Driving license:</strong> Yes</li>
-          <li><strong>Currently:</strong> Tour Manager, Carpark North</li>
-          <li><strong>Off duty:</strong> Drums &amp; repairing and tinkering with electronics</li>
+          <li><strong>Currently:</strong>&nbsp;Medialogy masters programme at AAU with the sound and music computing speciality</li><li>Tour Manager, Carpark North</li>
+          <li><strong>Off duty:</strong>&nbsp;Family, Playing the drums, &amp; repairing, tinkering with electronics and 3D printing in my studio.</li>
         </ul>
       </aside>
     </div>
@@ -364,39 +367,41 @@
     <p class="kicker">What I do</p>
     <h2>Skills</h2>
     <div class="skills-main" data-edit="">
-      <div class="skill-big">
-        <span class="num">01</span>
-        <h3>Rapid prototyping</h3>
-        <p>From idea to something people can hold, fast. Paper prototypes, breadboards, 3D-printed enclosures and quick Unity builds — test early, learn, change, repeat.</p>
+      <div class="skill-big"><br>
+        <h3>Prototyping</h3>
+        <p>From idea to a physical product, fast. Paper prototypes, breadboards, 3D-printed enclosures and quick Unity builds. &nbsp; build, test early, iterate, repeat. Looking back at some early prototypes when you have the finished product in your hand is a great feeling. - (if the product turned out good of course)&nbsp;</p>
         <div class="tags"><span class="tag">Paper prototyping</span><span class="tag">Fusion 360</span><span class="tag">3D printing</span><span class="tag">Unity</span><span class="tag">Figma</span></div>
         <p class="seen">Seen in <a href="#p-orbs">O.R.B.S.</a> · <a href="#p-deepseek">Deepseek</a> · <a href="#p-ipasif">IPASIF</a></p>
       </div>
-      <div class="skill-big">
-        <span class="num">02</span>
+      <div class="skill-big"><br>
         <h3>Problem declaration &amp; solutions</h3>
-        <p>Turning a vague brief into a sharp problem statement — analysis, state of the art, requirements — then designing, building and testing a solution against it. Every semester at AAU runs on this problem-based loop.</p>
-        <div class="tags"><span class="tag">Problem-based learning</span><span class="tag">Requirements</span><span class="tag">State of the art</span><span class="tag">Evaluation</span></div>
-        <p class="seen">Seen in <a href="#p-orbs">O.R.B.S.</a> · <a href="#p-shadow">My Shadow World</a> · <a href="#p-nightknight">Night Knight</a></p>
+        <p>A key aspect is to understand the problem before proposing the solution. I can help in every step from problem declaration to designing the solution and building it. This naturally also makes me a good fit for cross department communication, functioning and understanding multiple areas of expertise.</p>
+        <div class="tags"><span class="tag">Problem-based learning</span><span class="tag">Requirements</span><span class="tag">Evaluation</span></div>
+        <p class="seen">Seen in <a href="#p-orbs">O.R.B.S.</a> · <a href="#p-tacet">Tacet VR</a> · <a href="#p-ux">Smart-home study</a></p>
       </div>
-      <div class="skill-big">
-        <span class="num">03</span>
-        <h3>Embedded hardware</h3>
-        <p>ESP32 boards talking wirelessly over ESP-NOW, sensors and encoders, LEDs and haptics, battery power and boost converters — and getting it all to talk to Unity, PureData or TouchDesigner.</p>
-        <div class="tags"><span class="tag">ESP32</span><span class="tag">ESP-NOW</span><span class="tag">C++ / ESP-IDF</span><span class="tag">Sensors</span><span class="tag">Serial / OSC</span></div>
+      <div class="skill-big"><br>
+        <h3>Embedded hardware</h3><div><br></div>
+        <p>I enjoy designing and assembling electronics. Since I was a kid I have always been fascinated with electronics, disassembling it and trying to understand how it worked. This was something I had the opportunity to further develop during my studies and now have given me the skill <span style="font-size: 14.88px;">of taking an idea and working out how to build it myself.</span></p><p><span style="font-size: 14.88px;"><br></span></p><p><span style="font-size: 14.88px;">In the O.R.B.S project that meant</span>&nbsp;wireless&nbsp;<span style="font-size: 0.93rem;">communication between development boards, sensors and encoders for input, and giving feedback via LEDs and haptics, while still taking battery life in mind and keeping the size as small as possible to fit it in the final product.&nbsp;</span></p>
+        <div class="tags"><span class="tag">ESP32 development boards</span><span class="tag">ESP-NOW</span><span class="tag">Sensors</span><span class="tag">Serial / OSC</span></div>
         <p class="seen">Seen in <a href="#p-orbs">O.R.B.S.</a> · <a href="#p-ipasif">IPASIF</a> · <a href="#p-deepseek">Deepseek</a> (piezo hydrophone)</p>
       </div>
-      <div class="skill-big">
-        <span class="num">04</span>
-        <h3>Human–machine interaction</h3>
+      <div class="skill-big"><br>
+        <h3>Human Computer Interaction</h3>
         <p>Designing how people meet technology — tangible interfaces, interaction design and testing with real users through think-aloud, interviews, card sorting, SUS and game-experience questionnaires.</p>
         <div class="tags"><span class="tag">Tangible UI</span><span class="tag">Usability testing</span><span class="tag">SUS / GEQ</span><span class="tag">Thematic analysis</span></div>
-        <p class="seen">Seen in <a href="#p-orbs">O.R.B.S.</a> · <a href="#p-ux">Smart-home study</a> · <a href="#p-nightknight">Night Knight</a></p>
+        <p class="seen">Seen in <a href="#p-orbs">O.R.B.S.</a> · <a href="#p-ux">Smart-home study</a> · <a href="#p-tacet">Tacet VR</a></p>
+      </div>
+      <div class="skill-big"><br>
+        <h3>Sound</h3>
+        <p>Sound is where my love for drumming, curiosity for electronics and my studies meet. I design and implement sound for games and VR in Wwise and FMOD, with spatial audio and HRTFs so every sound comes from where it should. Now I'm going deeper with the Sound and Music Computing master's speciality at AAU learning about sound and music cognition and signal processing.</p>
+        <div class="tags"><span class="tag">Wwise</span><span class="tag">FMOD</span><span class="tag">Spatial audio / HRTF</span><span class="tag">Foley &amp; field recording</span><span class="tag">PureData</span><span class="tag">Ableton Live</span></div>
+        <p class="seen">Seen in <a href="#p-tacet">Tacet VR</a> · <a href="#p-deepseek">Deepseek</a> · <a href="#p-ipasif">IPASIF</a></p>
       </div>
     </div>
     <div class="skills-also" data-edit="">
       <div><strong>Also</strong></div>
       <div><span class="also-h">Production &amp; leadership</span> 10+ years of tours, live TV and video production — budgets, crews and deadlines that don't move.</div>
-      <div><span class="also-h">Software &amp; tools</span> C# / Unity, .NET MAUI, Python, Wwise, PureData, TouchDesigner, Figma.</div>
+      <div><span class="also-h">Software &amp; tools</span>Unity, Fusion360, Visual Studio code, Premiere Pro, Python, Wwise, Ableton Live, PureData, BambuStudio, Figma.&nbsp;</div>
     </div>
   </div>
 </section>
@@ -433,26 +438,22 @@
       <div class="chapter-body">
         <div class="chapter-text" data-edit="">
           <h4>About the project</h4>
-          <p>Our bachelor thesis asked whether tangible user interfaces can promote collaboration in video games. We designed the <strong>O.R.B.S.</strong> (Orchestrated Relationship Building Spheres) — two twistable, 3D-printed spheres — together with <strong>SpellBound</strong>, a co-op game where spells only fire when both players align the right symbols and press their spheres together. In a between-subjects study (O.R.B.S. vs. Xbox gamepads) using questionnaires, video observation and a Prisoner's Dilemma task, the O.R.B.S. group generally showed more collaboration — more explicit coordination, closeness and bonding — though the sample was too small to confirm it statistically.</p>
-          <h4>What I did</h4>
+          <p>Our bachelor thesis asked whether tangible user interfaces can promote collaboration in video games. We designed the <strong>O.R.B.S.</strong> (Orchestrated Relationship Building Spheres) — two twistable, 3D-printed spheres — together with <strong>SpellBound</strong>, a co-op game where spells only fire when both players align the right symbols and press their spheres together. In a between-subjects study (O.R.B.S. vs. Xbox gamepads) using questionnaires, video observation and a Prisoner's Dilemma task, the O.R.B.S. group generally showed more collaboration — more explicit coordination, closeness and bonding.</p>
+          <h4>MY RESPONSIBILITIES</h4>
           <!-- ✏️ EDIT: check these match what you did -->
           <ul class="did">
-            <li>Designed and assembled the hardware for both sphere controllers — everything inside the shells.</li>
-            <li>Electronics: M5Stack Stamp S3 (ESP32), a rotary encoder for 360° twist and press, a haptic motor and an LED ring that glows green or red when symbols line up.</li>
-            <li>Solved power and space problems — moved from a SparkFun Thing Plus to the smaller Stamp S3 and from 3.7 V to a boosted 5 V supply.</li>
-            <li>Wireless link: the spheres send input over ESP-NOW to a receiver ESP that feeds Unity over USB serial.</li>
-            <li>Ran the comparative playtests together with the group.</li>
+            <li>Designing and assembly of the hardware for both sphere controllers&nbsp;</li><li>Modeling and 3D printing of the spheres in fusion360</li>
+            <li>Running the comparative playtests together with the group.</li><li>Sound design and implementation using WWISE</li>
           </ul>
           <h4>What I learned</h4>
-          <ul class="did learned">
-            <li>Hardware lives or dies on power and space — the spheres only worked once I rethought them around a smaller board and a boosted 5 V supply.</li>
-            <li>Test the whole system, not just the new part. We usability-tested the controllers but not the game logic, so a button-mashing shortcut only surfaced in the final study.</li>
-            <li>Study design decides what you can claim: with 11 participants the trend was clear but not conclusive. Screening participants and filming hands and screen separately would have made the data stronger.</li>
-            <li>Custom hardware has to earn its place — a small effect raises the fair question of whether a custom game alone could do the job.</li>
+          <ul class="did learned"><br>
+            <li>The complexity of designing a product: practical limitations of design, hardware, usability and functionality.&nbsp;</li>
+            <li>Sound design and implementation using Wwise.&nbsp;</li>
+            <br>
           </ul>
-          <div class="tags"><span class="tag">Tangible UI</span><span class="tag">ESP32</span><span class="tag">ESP-NOW</span><span class="tag">Unity</span><span class="tag">3D printing</span><span class="tag">User study</span></div>
+          <div class="tags"><span class="tag">Tangible UI</span><span class="tag">ESP32</span><span class="tag">ESP-NOW</span><span class="tag">Unity</span><span class="tag">3D printing</span><span class="tag">User study&nbsp;</span><span class="tag">Sound design&nbsp;</span><span class="tag">Wwise</span></div>
           <div class="links">
-            <a href="media/docs/orbs-bachelor-thesis.pdf" target="_blank">📄 Read the thesis</a>
+            <a href="media/docs/orbs-bachelor-thesis.pdf" target="_blank">📄 Read the thesis</a><a href="media/docs/orbs-bachelor-thesis.pdf" target="_blank"><br></a>
           </div>
         </div>
         <div class="media-grid">
@@ -462,7 +463,7 @@
           <figure><img src="media/uni/orbs/orb-electronics.jpg" alt="Electronics inside the sphere" loading="lazy"><figcaption data-edit="">The electronics inside</figcaption></figure>
           <figure><img src="media/uni/orbs/orb-breakout-board.jpg" alt="Breakout board with ESP32 and LED strip" loading="lazy"><figcaption data-edit="">Stamp S3 breakout, encoder and LED ring</figcaption></figure>
           <figure><img src="media/uni/orbs/orbs-playtest.jpg" alt="Two players testing the O.R.B.S." loading="lazy"><figcaption data-edit="">Two players, two spheres</figcaption></figure>
-          <figure><img src="media/uni/orbs/spellbound-gameplay.jpg" alt="SpellBound gameplay" loading="lazy"><figcaption data-edit="">SpellBound — combo cast</figcaption></figure>
+          <figure><img src="media/uni/orbs/spellbound-gameplay.jpg" alt="SpellBound gameplay" loading="lazy"><figcaption data-edit="">Combo cast -any combo with a star has to be initiated by both players simultaneously.&nbsp;</figcaption></figure>
           <figure><img src="media/uni/orbs/orb-cad.jpg" alt="CAD model of the sphere" loading="lazy"><figcaption data-edit="">CAD model of the shell</figcaption></figure>
           <figure><img src="media/uni/orbs/orb-led-prototype.jpg" alt="Early LED and haptics prototype" loading="lazy"><figcaption data-edit="">Early breadboard prototype</figcaption></figure>
           <figure><img src="media/uni/orbs/paper-prototype-test.jpg" alt="Paper prototype playtest" loading="lazy"><figcaption data-edit="">Paper-prototype playtest</figcaption></figure>
@@ -477,16 +478,16 @@
     <div class="wrap chapter-inner">
       <header class="chapter-head" data-edit="">
         <p class="sem">Game design · 6th semester · 2026</p>
-        <h3>Deepseek — Team Deep</h3>
+        <h3>Deepseek.</h3>
         <p class="lede">An underwater horror-survival extraction game where sound does the heavy lifting.</p>
       </header>
       <div class="chapter-body">
         <div class="chapter-text" data-edit="">
           <h4>About the project</h4>
           <p>A single-player adventure game: you pilot a diving vessel across a dark ocean floor, find and service drill stations and solve puzzles while the threat level rises. We took it from paper prototype to a playable Unity build, with playtests shaping the balance, accessibility and narrative.</p>
-          <h4>What I did</h4>
+          <h4>my Responsibilities</h4>
           <ul class="did">
-            <li>All sound implementation in Wwise, and most of the sound design.</li>
+            <li>All sound implementation in Wwise, and &nbsp;sound design.</li>
             <li>Sound vision: every sound should feel like it's heard through real water, reinforcing the visuals.</li>
             <li>Built an underwater microphone from a piezo element and recorded sound effects through water in a tank.</li>
           </ul>
@@ -501,7 +502,7 @@
             <a href="https://marcelkress.itch.io/deep-seek" target="_blank">🎮 Play it on itch.io</a>
             <a href="https://youtu.be/fvCfmkl2ue8" target="_blank">▶️ Trailer</a>
             <a href="https://github.com/Marcelkress/Deep-Seek.git" target="_blank">💻 GitHub</a>
-            <a href="media/docs/deepseek-design-document.pdf" target="_blank">📄 Design document</a>
+            <a href="media/docs/deepseek-design-document.pdf" target="_blank"><br></a>
           </div>
         </div>
         <div class="media-grid">
@@ -529,19 +530,17 @@
       <div class="chapter-body">
         <div class="chapter-text" data-edit="">
           <h4>About the project</h4>
-          <p>A Unity vertical slice: you run around collecting objects while six flocks of birds roam overhead. If a flock spots you, its leader dives in with a deadly firebolt — unless you reach cover first.</p>
-          <h4>What I did</h4>
+          <p>A Unity vertical slice: you run around collecting objects while six flocks of birds roam overhead. If a flock spots you, its leader dives in with a deadly firebolt — unless you run to cover first.</p>
+          <h4><br></h4>
           <ul class="did">
-            <li>Individual project — design and implementation.</li>
+            <li>Individual project — design and implementation of AI mechanics.</li>
             <li>Flocking with boids (separation, alignment, cohesion), each flock following a "Masterbird" leader, plus obstacle avoidance against terrain and cover.</li>
             <li>Unity Behavior Graph driving the leader through idle, roam, seek and dive.</li>
             <li>Line-of-sight perception with raycasts, so taking cover actually protects you.</li>
           </ul>
           <h4>What I learned</h4>
           <ul class="did learned">
-            <li>How believable flocking emerges from three simple rules — and how much of the result comes from tuning the parameters.</li>
-            <li>Splitting "what to do" (behaviour graph) from "how to move" (motor script), and writing custom behaviour nodes that bridge the two.</li>
-            <li>Using an AI assistant to get unstuck on vector maths and syntax, while understanding the code well enough to keep iterating on it myself.</li>
+            <li>AI programming: Neural networks, machine learning, deep learning, optimization, logic and data science.&nbsp;</li>
           </ul>
           <div class="tags"><span class="tag">Unity</span><span class="tag">C#</span><span class="tag">Boids</span><span class="tag">Behaviour trees</span></div>
           <div class="links">
@@ -573,8 +572,7 @@
       <div class="chapter-body">
         <div class="chapter-text" data-edit="">
           <h4>About the project</h4>
-          <p>A qualitative, exploratory study with four Danish participants aged 33–67. Interviews and card sorting revealed five barriers: privacy scepticism (ranked most important by everyone), complexity, distrust in big tech, relevance in context, and Home Assistant as an alternative. Imagining AI-guided setup raised perceived ease of use (+6.8%) but lowered perceived usefulness (−2.4%) — AI alone can't fix a trust problem.</p>
-          <h4>What I did</h4>
+          <p>A qualitative, exploratory study with four Danish participants aged 33–67. Interviews and card sorting revealed five barriers: privacy scepticism (ranked most important by everyone), complexity, distrust in big tech, relevance in context, and Home Assistant as an alternative. Imagining AI-guided setup raised perceived ease of use (+6.8%) but lowered perceived usefulness (−2.4%) — AI alone can't fix a trust problem.</p><p><br></p>
           <ul class="did">
             <li>Individual project — research design, interviews, card sorting and analysis.</li>
             <li>Semi-structured interviews and two rounds of card sorting.</li>
@@ -585,8 +583,7 @@
           <ul class="did learned">
             <li>Running a qualitative study end to end on my own — and how easily a lone researcher's expectations can steer follow-up questions.</li>
             <li>Small convenience samples give insight, not general truths.</li>
-            <li>Method details matter: re-sorting the same cards after the AI discussion may have nudged answers — next time, clear the board and start over.</li>
-            <li>Trust beats features — people's barrier was privacy, not missing technology.</li>
+            <li>Trust vs features — people's barrier was privacy, not missing technology.</li>
           </ul>
           <div class="tags"><span class="tag">UX research</span><span class="tag">Interviews</span><span class="tag">Card sorting</span><span class="tag">Thematic analysis</span></div>
           <div class="links">
@@ -594,8 +591,8 @@
           </div>
         </div>
         <div class="media-grid">
-          <figure class="half"><img src="media/uni/ux/card-sorting-1.jpg" alt="Card sorting results" loading="lazy"><figcaption data-edit="">Card sorting, round one</figcaption></figure>
-          <figure class="half"><img src="media/uni/ux/card-sorting-2.jpg" alt="Card sorting results" loading="lazy"><figcaption data-edit="">Card sorting, round two</figcaption></figure>
+          <figure class="feature"><img src="media/uni/ux/card-sorting-1.jpg" alt="Card sorting results" loading="lazy"><figcaption data-edit="">Card sorting, round one</figcaption></figure>
+          <figure class="feature"><img src="media/uni/ux/card-sorting-2.jpg" alt="Card sorting results" loading="lazy"><figcaption data-edit="">Card sorting, round two</figcaption></figure>
         </div>
       </div>
     </div>
@@ -615,13 +612,13 @@
           <h4>About the project</h4>
           <p>We turned a short film into a VR experience — instead of watching the story on a screen, you step inside its dreamlike, fog-filled scenes. It was an extension of the film rather than a direct translation. We wanted to research how using VR could help raising immersion.&nbsp;</p>
           <p>Built in Unity together with the film's director, using environmental storytelling, spatial audio and cinematic lighting. An A/B study (VR vs. watching the film) with interviews and the Igroup Presence Questionnaire found no significant gain in how accurately people read the director's intent — but a clear shift in engagement: VR participants told the story from an embodied, first-person view, while viewers stayed observers.</p>
-          <h4>What I did</h4>
+          <h4>MY RESPONSIBILITIES</h4>
           <ul class="did">
             <li>Sound design and sound geometrics implementation via FMOD and meta XR sound kit to achieve realistic spatial sound utilising general HRTF's.</li>
           </ul>
           <h4>What I learned</h4>
           <ul class="did learned">
-            <li>Sound perception and cognition, how sound are physically perceived and modelled.&nbsp;</li><li>Sound implementation using FMOD and Unity.&nbsp;</li><li>Foley recording a anachoic chamber to be able to correctly use HRTF's (Head Related Tranfer Functions)</li>
+            <li>Sound perception and cognition, how sound are physically perceived in humans and how to use models to replicate it.&nbsp;</li><li>Sound implementation using FMOD and Unity.&nbsp;</li><li>Foley recording a anachoic chamber to be able to correctly use HRTF's (Head Related Tranfer Functions)</li>
           </ul>
           <div class="tags"><span class="tag">VR</span><span class="tag">Unity</span><span class="tag">FMOD</span><span class="tag">Meta XR Audio</span><span class="tag">Spatial audio / HRTF</span><span class="tag">Film adaptation</span></div>
           <div class="links">
@@ -630,7 +627,7 @@
         </div>
         <div class="media-grid">
           <figure class="feature"><video controls="" preload="none" playsinline="" poster="media/uni/tacet/car.jpg" src="media/uni/tacet/tacet-vr-av.mp4"></video><figcaption data-edit="">AV production</figcaption></figure>
-          <figure class="tall"><img src="media/uni/tacet/Audio%20Anachoic.JPEG" alt="Mathias with a head-and-torso simulator in the anechoic chamber" loading="lazy"><figcaption data-edit="">In the anechoic chamber</figcaption></figure>
+          <figure class="tall"><img src="media/uni/tacet/Audio%20Anachoic.JPEG" alt="Mathias with a head-and-torso simulator in the anechoic chamber" loading="lazy"><figcaption data-edit="">In the anechoic chamber and my good friend Hassan.&nbsp;</figcaption></figure>
           <figure><img src="media/uni/tacet/bedroom.jpg" alt="Bedroom scene in VR" loading="lazy"><figcaption data-edit="">The bedroom</figcaption></figure>
           <figure><img src="media/uni/tacet/tv.jpg" alt="Old TV in the fog" loading="lazy"><figcaption data-edit="">Memories on an old TV</figcaption></figure>
           <figure><img src="media/uni/tacet/hands.jpg" alt="Glowing hands" loading="lazy"><figcaption data-edit="">The hand sequence</figcaption></figure>
@@ -654,16 +651,16 @@
       <div class="chapter-body">
         <div class="chapter-text" data-edit="">
           <h4>About the project</h4>
-          <p>A framework that links sensors on ESP32 boards to PureData for sound and TouchDesigner for visuals — ESP-NOW between the boards, OSC to the computer. Three use cases ("Spaceship", "Ballin'" and "What's in the Box") show what it can do; artists evaluated it in interviews, and stress tests measured about 44 ms average latency with satisfactory range.</p>
-          <h4>What I did</h4>
+          <p>A framework that links sensors on ESP32 boards to PureData for sound and TouchDesigner for visuals — ESP-NOW between the boards, OSC to the computer. Two use cases ("The ball" And "The Box") functioned as input devices. Artists evaluated it in interviews.</p>
+          <h4>MY RESPONSIBILITIES</h4>
           <ul class="did">
-            <li>Sensor design and assembly + code.</li>
+            <li>Sensor design and assembly + code.</li><li>Interview of test participant</li>
           </ul>
           <h4>What I learned</h4>
           <ul class="did learned">
             <li>People judge the demo, not the tool — the artists responded to our use cases rather than the framework, so testers need hands-on time with the actual toolkit.</li>
-            <li>There's a big gap between "it works" and "artists can use it": enclosures, ready-made sensors and a GUI matter as much as the core system.</li>
-            <li>Wireless latency is a real design constraint when sound has to react to people live. We could have stripping the first 5 layers of the OSI model and stayed within the ESP-NOW and serial protocols, which could have lowered the latency to around 1 ms. We used this method in future projects.</li>
+            <li>There's a gap between "it works" and "artists can use it": enclosures, ready-made sensors and a GUI matter as much as the core system.</li>
+            <li>Wireless latency is a real design constraint when sound has to react to people live.</li>
           </ul>
           <div class="tags"><span class="tag">ESP32</span><span class="tag">ESP-NOW</span><span class="tag">PureData</span><span class="tag">TouchDesigner</span><span class="tag">OSC</span></div>
           <div class="links">
@@ -672,7 +669,7 @@
         </div>
         <div class="media-grid">
           <figure class="feature"><video controls="" preload="none" playsinline="" poster="media/uni/ipasif/performance.jpg" src="media/uni/ipasif/ipasif-av.mp4"></video><figcaption data-edit="">AV production</figcaption></figure>
-          <figure><img src="media/uni/ipasif/projection-yellow.jpg" alt="Interactive projection" loading="lazy"><figcaption data-edit="">Sensor-driven visuals</figcaption></figure>
+          
           <figure><img src="media/uni/ipasif/projection-interaction.jpg" alt="Person interacting with projection" loading="lazy"><figcaption data-edit="">Testing the installation</figcaption></figure>
           <figure><img src="media/uni/ipasif/sensor-boxes.jpg" alt="Sensor boxes" loading="lazy"><figcaption data-edit="">Wireless sensor modules</figcaption></figure>
           <figure><img src="media/uni/ipasif/esp-now-diagram.jpg" alt="ESP-NOW system diagram" loading="lazy"><figcaption data-edit="">Sensor → ESP-NOW → OSC</figcaption></figure>
@@ -683,87 +680,7 @@
     </div>
   </article>
 
-  <!-- ───────────── 7 · MY SHADOW WORLD (3rd semester) ───────────── -->
-  <article class="chapter" id="p-shadow" data-short="My Shadow World" data-media-dir="media/uni/shadow/" data-bg="media/uni/shadow/background.jpg" data-bg-opacity="0.3">
-    <div class="chapter-bgwrap"><div class="chapter-bg"></div></div>
-    <div class="wrap chapter-inner">
-      <header class="chapter-head" data-edit="">
-        <p class="sem">3rd semester · 2024</p>
-        <h3>My Shadow World</h3>
-        <p class="lede">A game about loneliness, told through its environment and story.</p>
-      </header>
-      <div class="chapter-body">
-        <div class="chapter-text" data-edit="">
-          <h4>About the project</h4>
-          <p>Loneliness is rising in Denmark, especially among 18–34-year-olds — who are also the group that plays the most games. We designed an exploration game where environment and storytelling carry the feeling of loneliness, built it through iterative prototypes and tested the final version with 27 players (think-aloud, interviews, SUS). Players recognised the feeling — and showed us how personal loneliness is.</p>
-          <h4>What I did</h4>
-          <ul class="did">
-            <li class="todo">✏️ Add what you did on this project</li>
-            <li>Six-person group project.</li>
-          </ul>
-          <h4>What I learned</h4>
-          <ul class="did learned">
-            <li>Visual computing can tell a story: shaders gave the shadow monsters no physical form, mirroring emptiness, and motion capture made their animation efficient.</li>
-            <li>Playing alone in first person deepened the experience — players felt isolated and explored more.</li>
-            <li>Combining qualitative and quantitative methods (think-aloud, interviews, SUS) gives a fuller picture — and loneliness is experienced very differently from person to person.</li>
-          </ul>
-          <div class="tags"><span class="tag">Game design</span><span class="tag">Storytelling</span><span class="tag">Usability testing</span></div>
-          <div class="links">
-            <a href="media/docs/my-shadow-world-report.pdf" target="_blank">📄 Read the report</a>
-          </div>
-        </div>
-        <div class="media-grid">
-          <figure class="feature"><img src="media/uni/shadow/shadow-figures.jpg" alt="Shadow figures in the forest" loading="lazy"><figcaption data-edit="">The shadows</figcaption></figure>
-          <figure><img src="media/uni/shadow/cabin-desk.jpg" alt="Desk inside a cabin" loading="lazy"><figcaption data-edit="">Inside the cabin</figcaption></figure>
-          <figure><img src="media/uni/shadow/observatory.jpg" alt="Observatory room" loading="lazy"><figcaption data-edit="">The observatory</figcaption></figure>
-          <figure><img src="media/uni/shadow/motion-capture.jpg" alt="Capturing movement for a character" loading="lazy"><figcaption data-edit="">Capturing character movement</figcaption></figure>
-          <figure class="half"><img src="media/uni/shadow/island-map.jpg" alt="Hand-drawn island map" loading="lazy"><figcaption data-edit="">Mapping the island</figcaption></figure>
-          <figure class="half"><img src="media/uni/shadow/affinity-diagram.jpg" alt="Affinity diagram of test findings" loading="lazy"><figcaption data-edit="">Sorting test findings</figcaption></figure>
-        </div>
-      </div>
-    </div>
-  </article>
-
-  <!-- ───────────── 8 · NIGHT KNIGHT (2nd semester) ───────────── -->
-  <article class="chapter" id="p-nightknight" data-short="Night Knight" data-media-dir="media/uni/nightknight/" data-bg="media/uni/nightknight/background.jpg" data-bg-opacity="0.12">
-    <div class="chapter-bgwrap"><div class="chapter-bg"></div></div>
-    <div class="wrap chapter-inner">
-      <header class="chapter-head" data-edit="">
-        <p class="sem">2nd semester · 2024</p>
-        <h3>Night Knight — Safety App</h3>
-        <p class="lede">Helping women aged 18–30 feel safer on the way home at night.</p>
-      </header>
-      <div class="chapter-body">
-        <div class="chapter-text" data-edit="">
-          <h4>About the project</h4>
-          <p>A personal-safety app designed in Figma and built in .NET MAUI, with live maps, trusted contacts and a motion-sensor alarm. Evaluated with 18 users from the target group (think-aloud, interviews, SUS) — scoring <strong>85.9 on the System Usability Scale (grade A+)</strong>.</p>
-          <h4>What I did</h4>
-          <ul class="did">
-            <li class="todo">✏️ Add what you did on this project</li>
-            <li>Six-person group project.</li>
-          </ul>
-          <h4>What I learned</h4>
-          <ul class="did learned">
-            <li>Pick the tool that fits the job: we started in Unity, but a game engine fought us on maps and app UI, so we switched to .NET MAUI.</li>
-            <li>Scope to what's feasible: detecting attacks with machine learning was out of reach, so we built a simpler accelerometer-based alarm that actually worked.</li>
-            <li>Easy to use isn't the same as useful — the app scored A+ on usability, yet most testers were neutral about using it often.</li>
-          </ul>
-          <div class="tags"><span class="tag">.NET MAUI</span><span class="tag">C#</span><span class="tag">Figma</span><span class="tag">UX testing</span></div>
-          <div class="links">
-            <a href="media/docs/night-knight-report.pdf" target="_blank">📄 Read the report</a>
-          </div>
-        </div>
-        <div class="media-grid">
-          <figure class="feature"><img class="contain" src="media/uni/nightknight/app-flow.jpg" alt="App flow: destination, contacts, share trip" loading="lazy"><figcaption data-edit="">Plan the route, pick contacts, share the trip</figcaption></figure>
-          <figure class="half"><img src="media/uni/nightknight/map-alarm.jpg" alt="Map with alarm button" loading="lazy"><figcaption data-edit="">Live map and alarm</figcaption></figure>
-          <figure class="half"><img src="media/uni/nightknight/contacts.jpg" alt="Contacts screen" loading="lazy"><figcaption data-edit="">Friends and groups</figcaption></figure>
-          <figure class="half"><img class="contain" src="media/uni/nightknight/iterations.jpg" alt="Design changes after testing" loading="lazy"><figcaption data-edit="">Changes after testing</figcaption></figure>
-          <figure class="half"><img class="contain" src="media/uni/nightknight/sus-boxplot.jpg" alt="SUS score box plot" loading="lazy"><figcaption data-edit="">SUS scores — average 85.9</figcaption></figure>
-        </div>
-      </div>
-    </div>
-  </article>
-</section>
+  </section>
 
 <div id="lightbox" aria-hidden="true"><img alt=""><p></p></div>
 
@@ -813,33 +730,30 @@
   <div class="wrap">
     <p class="kicker">Current work</p>
     <h2>On the road with Carpark North</h2>
-    <p data-edit="" style="max-width:720px;color:var(--muted)">Since 2018 I've been tour manager for Carpark North — one of Denmark's biggest rock bands. Beyond running the tours, I shoot and cut video recaps from the shows. A few of them below.</p>
+    <p data-edit="" style="max-width:720px;color:var(--muted)">Since 2018 I've been tour manager for Carpark North — one of Denmark's biggest rock bands. Beyond my main work as tour manager, I sometimes shoot and cut video recaps from the shows. A few of them below.</p>
     <div class="videos">
       <figure>
         <img src="media/tour/festival-stage.jpg" alt="Carpark North on stage in front of a festival crowd">
-        <figcaption data-edit="">Festival summer — view from the stage</figcaption>
+        <figcaption data-edit=""><br></figcaption>
       </figure>
       <figure>
         <video controls="" preload="none" src="media/tour/esbjerg.mp4"></video>
-        <figcaption data-edit="">Esbjerg — show recap</figcaption>
+        <figcaption data-edit=""><br></figcaption>
       </figure>
       <figure>
         <video controls="" preload="none" src="media/tour/aalborg.mp4"></video>
-        <figcaption data-edit="">Aalborg — show recap</figcaption>
+        <figcaption data-edit=""><br></figcaption>
       </figure>
       <figure>
         <video controls="" preload="none" src="media/tour/nordals.mp4"></video>
-        <figcaption data-edit="">Nordals — show recap</figcaption>
+        <figcaption data-edit=""><br></figcaption>
       </figure>
       <figure>
         <video controls="" preload="none" src="media/tour/fano.mp4"></video>
-        <figcaption data-edit="">Fanø — with vocals</figcaption>
+        <figcaption data-edit=""><br></figcaption>
       </figure>
     </div>
-    <p style="margin-top:24px;color:var(--muted);font-size:.9rem" data-edit="">
-      Earlier: at <strong>Moodagent</strong> I worked at the intersection of music and AI —
-      <a href="media/docs/moodagent-music-and-ai-2019.pdf" target="_blank">read the Music &amp; AI deck (2019)</a>.
-    </p>
+    <p style="margin-top:24px;color:var(--muted);font-size:.9rem" data-edit=""><br></p>
   </div>
 </section>
 
@@ -875,7 +789,7 @@
           <li><span>Nationality</span>Danish</li>
           <li><span>Driving licence</span>Yes</li>
           <!-- ✏️ EDIT: add your LinkedIn URL -->
-          <li><span>LinkedIn</span><a href="https://www.linkedin.com/" target="_blank">linkedin.com</a></li>
+          <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/mathiasjaque/?isSelfProfile=true">https://www.linkedin.com/in/mathiasjaque</a><br></li>
         </ul>
 
         <h4>Languages</h4>
@@ -886,37 +800,36 @@
 
         <h4>Core skills</h4>
         <ul class="cv-bullets">
-          <li>Rapid prototyping</li>
+          <li>Rapid prototyping</li><li>Embedded hardware</li><li>Sound design and spatial audio</li>
           <li>Problem declaration &amp; solutions</li>
-          <li>Embedded hardware</li>
           <li>Human–machine interaction</li>
           <li>Production &amp; team leadership</li>
         </ul>
 
         <h4>Hardware &amp; code</h4>
-        <p class="cv-chips">ESP32 · ESP-NOW · ESP-IDF · C++ · Sensors &amp; encoders · LEDs &amp; haptics · Battery &amp; power · Serial / OSC · C# · Unity · .NET MAUI · Python</p>
+        <p class="cv-chips">ESP32 · ESP-NOW · Visual Studio Code &nbsp;· &nbsp;Github<span style="font-size: 13.44px;">·&nbsp;</span><span style="font-size: 0.84rem;">Components design · LEDs &amp; haptics &nbsp;· Serial / OSC · C# · Unity · .NET MAUI · Python</span></p>
 
         <h4>Design, sound &amp; media</h4>
-        <p class="cv-chips">Fusion 360 · 3D printing · Figma · FMOD · Wwise · Meta XR Audio · PureData · TouchDesigner · Video production &amp; editing</p>
+        <p class="cv-chips">Fusion 360 · 3D printing · &nbsp;FMOD · Wwise ·Unity<span style="font-size: 13.44px;">·</span><span style="font-size: 13.44px;">&nbsp;</span><span style="font-size: 0.84rem;">&nbsp;Meta XR Audio · PureData · Video production &amp; editing</span></p>
 
         <h4>Research methods</h4>
         <p class="cv-chips">Usability testing · Think-aloud · Semi-structured interviews · Card sorting · SUS · GEQ / SPGQ / IPQ · Thematic analysis · A/B and between-subjects studies</p>
 
         <h4>Off duty</h4>
-        <p class="cv-small">Drums, and repairing and tinkering with electronics.</p>
+        <p class="cv-small"><span style="font-size: 14.72px; background-color: rgb(22, 22, 31);">Family, Playing the drums, &amp; repairing, tinkering with electronics and 3D printing in my studio.</span><br></p>
       </aside>
 
       <div class="cv-main" data-edit="">
         <h4>Profile</h4>
-        <p class="cv-profile">Medialogy graduate from Aalborg University Copenhagen with more than ten years in TV, live music and video production. I turn loose ideas into clear problem statements and working prototypes — from ESP32-based tangible controllers and sensor installations to games, VR and apps — and test them with real users. Touring and live broadcast taught me to plan hard, lead calmly and deliver on time when the show can't move.</p>
+        <p class="cv-profile">Medialogy graduate from Aalborg University Copenhagen with more than ten years in TV, live music and video production. I turn loose ideas into clear problem statements and working prototypes — from tangible controllers and sensor installations to sound, games, VR and apps. Touring and live broadcast taught me to plan hard, lead calmly and deliver on time.</p>
 
         <h4>Education</h4>
         <div class="cv-item">
           <div class="cv-when">2023 — 2026</div>
           <div>
             <h5>BSc Medialogy · Aalborg University Copenhagen</h5>
-            <p>Human–machine interaction, rapid prototyping, embedded electronics, game design, sound and VR, taught through problem-based semester projects.</p>
-            <p class="cv-small">Bachelor thesis: <a href="#p-orbs">O.R.B.S.</a> — tangible controllers that promote collaboration in games. Other projects: <a href="#p-tacet">Tacet VR</a>, <a href="#p-ipasif">IPASIF</a>, <a href="#p-shadow">My Shadow World</a>, <a href="#p-nightknight">Night Knight</a>, <a href="#p-deepseek">Deepseek</a>.</p>
+            <p>Human–Computer interaction, rapid prototyping, embedded electronics, game design, sound and VR, taught through problem-based semester projects.</p>
+            <p class="cv-small">Bachelor thesis: <a href="#p-orbs">O.R.B.S.</a> — tangible controllers that promote collaboration in games. Other projects: <a href="#p-tacet">Tacet VR</a>, <a href="#p-ipasif">IPASIF</a>, <a href="#p-deepseek">Deepseek</a>.</p><p class="cv-small">Gradepoint average 10 (B)</p>
           </div>
         </div>
         <div class="cv-item">
@@ -972,7 +885,7 @@
             <h5>Broadcast TV &amp; film production · Copenhagen</h5>
             <p>From runner to production manager on live and recorded shows for DR and TV2.</p>
             <table class="cv-credits">
-              <tr><td>2019</td><td>Production Manager</td><td>United Production</td><td>Voice Junior</td></tr>
+              <tbody><tr><td>2019</td><td>Production Manager</td><td>United Production</td><td>Voice Junior</td></tr>
               <tr><td>2018–19</td><td>Production Coordinator</td><td>Snowman Production</td><td>Boligkøb i blinde</td></tr>
               <tr><td>2018</td><td>Technical Manager, scene shifts</td><td>Nordisk Film TV</td><td>DR Live</td></tr>
               <tr><td>2018</td><td>Production Coordinator</td><td>United Production</td><td>Boligkøb i blinde</td></tr>
@@ -986,7 +899,7 @@
               <tr><td>2011–12</td><td>Runner</td><td>Nordisk Film TV</td><td>Weekend Weekend</td></tr>
               <tr><td>2011</td><td>Runner</td><td>Eyeworks</td><td>Zulu Kvægræs 3 (Australia)</td></tr>
               <tr><td>2011</td><td>Piccolo</td><td>Eyeworks</td><td>In-house</td></tr>
-            </table>
+            </tbody></table>
           </div>
         </div>
 
@@ -1012,7 +925,7 @@
 </footer>
 
 <!-- ================= EDIT MODE ================= -->
-<div id="editHint">You're in edit mode — click any dashed area and type. When you're happy, hit 💾 Save and replace the old index.html in your folder with the downloaded one.</div>
+<div id="editHint">You're in edit mode — click any dashed area and type. Hit 💾 Save when you're happy. The first time, pick your Portofolio folder; after that it saves straight into index.html.</div>
 <div id="editBar">
   <button id="editBtn" onclick="toggleEdit()">✏️ Edit page</button>
   <button id="saveBtn" onclick="savePage()" style="display: none;">💾 Save</button>
@@ -1042,10 +955,10 @@ function printCV(){
   window.print();
 }
 
-function savePage(){
+function buildPageHTML(){
   // copy the page and strip everything that only exists while editing / at runtime
   const doc = document.documentElement.cloneNode(true);
-  doc.querySelectorAll('.edit-ui').forEach(e => e.remove());
+  doc.querySelectorAll('.edit-ui, #saveToast').forEach(e => e.remove());
   doc.querySelectorAll('[contenteditable]').forEach(e => e.removeAttribute('contenteditable'));
   doc.querySelector('body').classList.remove('editing', 'print-cv');
   doc.querySelectorAll('.chapter').forEach(c => { c.style.removeProperty('--o'); if(!c.getAttribute('style')) c.removeAttribute('style'); });
@@ -1055,15 +968,99 @@ function savePage(){
   const lb = doc.querySelector('#lightbox'); lb.classList.remove('open'); lb.querySelector('img').removeAttribute('src'); lb.querySelector('p').textContent = '';
   doc.querySelector('#editBtn').textContent = '✏️ Edit page';
   doc.querySelector('#saveBtn').style.display = 'none';
+  return '<!DOCTYPE html>\n' + doc.outerHTML;
+}
 
-  const html = '<!DOCTYPE html>\n' + doc.outerHTML;
+/* ---- save straight into the Portofolio folder (Chrome, Edge, Brave, Arc) ----
+   First save: you pick the Portofolio folder once. After that 💾 Save writes
+   index.html directly, and puts a copy of the previous version in _backups/
+   (never published). Browsers without this feature fall back to a download. */
+const SAVE_DB = 'portfolio-editor';
+// Save writes back to the page you're editing (index.html, or another version next to it)
+const PAGE_FILE = decodeURIComponent(location.pathname.split('/').pop()) || 'index.html';
+function saveDB(){
+  return new Promise((res, rej) => {
+    const r = indexedDB.open(SAVE_DB, 1);
+    r.onupgradeneeded = () => r.result.createObjectStore('handles');
+    r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error);
+  });
+}
+async function getFolder(){
+  try {
+    const db = await saveDB();
+    return await new Promise(res => { const q = db.transaction('handles').objectStore('handles').get('folder'); q.onsuccess = () => res(q.result || null); q.onerror = () => res(null); });
+  } catch(e){ return null; }
+}
+async function rememberFolder(h){
+  try { const db = await saveDB(); db.transaction('handles', 'readwrite').objectStore('handles').put(h, 'folder'); } catch(e){}
+}
+function forgetFolder(){
+  saveDB().then(db => db.transaction('handles', 'readwrite').objectStore('handles').delete('folder')).catch(() => {});
+}
+async function pickFolder(){
+  toast('Pick your <b>Portofolio</b> folder (the one with ' + PAGE_FILE + ' in it).', 0);
+  const dir = await window.showDirectoryPicker({id: 'portfolio', mode: 'readwrite'});
+  try { await dir.getFileHandle(PAGE_FILE); }
+  catch(e){ throw new Error('That folder has no ' + PAGE_FILE + ' — pick the Portofolio folder itself.'); }
+  await rememberFolder(dir);
+  return dir;
+}
+async function folderWithPermission(){
+  let dir = await getFolder();
+  if(dir){
+    let perm = await dir.queryPermission({mode: 'readwrite'});
+    if(perm !== 'granted') perm = await dir.requestPermission({mode: 'readwrite'});
+    if(perm !== 'granted') dir = null;
+  }
+  return dir || await pickFolder();
+}
+async function backupCurrent(dir){
+  try {
+    const old = await (await dir.getFileHandle(PAGE_FILE)).getFile();
+    const bdir = await dir.getDirectoryHandle('_backups', {create: true});
+    const stamp = new Date().toISOString().slice(0, 19).replace(/[:T]/g, '-');
+    const base = PAGE_FILE.replace(/\.html?$/i, '');
+    const w = await (await bdir.getFileHandle(`${base}-${stamp}.html`, {create: true})).createWritable();
+    await w.write(await old.text()); await w.close();
+    // keep the 15 newest backups
+    const names = [];
+    for await (const [name, h] of bdir.entries()) if(h.kind === 'file' && name.startsWith(base + '-20')) names.push(name);
+    names.sort().slice(0, -15).forEach(n => bdir.removeEntry(n).catch(() => {}));
+  } catch(e){ console.warn('Backup skipped:', e); }
+}
+function toast(msg, ms = 2500){
+  let t = document.getElementById('saveToast');
+  if(!t){ t = document.createElement('div'); t.id = 'saveToast'; document.body.appendChild(t); }
+  t.innerHTML = msg; t.classList.add('show');
+  clearTimeout(t._h); if(ms) t._h = setTimeout(() => t.classList.remove('show'), ms);
+}
+
+async function savePage(){
+  const html = buildPageHTML();
+  if('showDirectoryPicker' in window){
+    try {
+      const dir = await folderWithPermission();
+      await backupCurrent(dir);
+      const w = await (await dir.getFileHandle(PAGE_FILE)).createWritable();
+      await w.write(html); await w.close();
+      toast('✔ Saved to ' + PAGE_FILE);
+      setTimeout(() => location.reload(), 900);
+      return;
+    } catch(e){
+      if(e.name === 'AbortError'){ toast('Save cancelled — nothing was changed.'); return; }
+      if(e.name === 'NotFoundError'){ forgetFolder(); }
+      toast('Couldn\'t save directly: ' + (e.message || e) + '<br>Downloading a copy instead.', 6000);
+      console.warn(e);
+    }
+  }
+  // fallback: download (Safari / Firefox, or if direct saving failed)
   const blob = new Blob([html], {type:'text/html'});
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = 'index.html';
+  a.download = PAGE_FILE;
   a.click();
   setTimeout(() => URL.revokeObjectURL(a.href), 1000);
-  alert('Saved! A new index.html was downloaded.\n\nMove it into your Portofolio folder and replace the old file — that\'s it.');
+  alert('Saved! A new index.html was downloaded.\n\nMove it into your Portofolio folder and replace the old file. (Open the page in Chrome or Edge to save directly next time.)');
 }
 
 /* ============ UNIVERSITY CHAPTERS: scroll-open, backgrounds, rail, lightbox ============ */
